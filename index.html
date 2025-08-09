@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop Onboarding Wizard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        background-color: #f9f9f9;
+        font-family: Arial, sans-serif;
+    }
+    .wizard-step {
+        display: none;
+    }
+    .wizard-step.active {
+        display: block;
+    }
+    .theme-card {
+        border: 2px solid transparent;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .theme-card:hover, .theme-card.selected {
+        border-color: turquoise;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+    .scroll-box {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+    }
+</style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary mb-4">Shop Onboarding Wizard</h2>
+
+    <!-- Step 1 -->
+    <div class="wizard-step active" id="step1">
+        <h4>Step 1: Apply a Theme</h4>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card theme-card" data-theme="Bags Theme">
+                    <img src="https://via.placeholder.com/250x150" class="card-img-top">
+                    <div class="card-body text-center">Bags Theme</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card theme-card" data-theme="Flex Theme">
+                    <img src="https://via.placeholder.com/250x150" class="card-img-top">
+                    <div class="card-body text-center">Flex Theme</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card theme-card" data-theme="Chic Theme">
+                    <img src="https://via.placeholder.com/250x150" class="card-img-top">
+                    <div class="card-body text-center">Chic Theme</div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 text-end">
+            <button class="btn btn-primary next-step">Next</button>
+        </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="wizard-step" id="step2">
+        <h4>Step 2: Add Product Type & Category</h4>
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Product Type</label>
+                <input type="text" class="form-control" placeholder="e.g., Books">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Category (Optional)</label>
+                <input type="text" class="form-control" placeholder="e.g., Academic Book">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Sub-Category (Optional)</label>
+                <input type="text" class="form-control" placeholder="e.g., Medical Book">
+            </div>
+        </form>
+        <div class="mt-4 text-end">
+            <button class="btn btn-secondary prev-step">Back</button>
+            <button class="btn btn-primary next-step">Next</button>
+        </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="wizard-step" id="step3">
+        <h4>Step 3: Add Your First Product</h4>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="scroll-box">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" class="form-control" placeholder="Enter product name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Product Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Add Images</label>
+                            <input type="file" class="form-control">
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="skuCheck">
+                            <label class="form-check-label" for="skuCheck">Product has an SKU code</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="hsnCheck">
+                            <label class="form-check-label" for="hsnCheck">Product has an HSN/SAC code</label>
+                        </div>
+                        <h5>Pricing Details</h5>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="gstCheck">
+                            <label class="form-check-label" for="gstCheck">Price inclusive of GST</label>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Net Price">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="List Price">
+                            </div>
+                        </div>
+                        <div class="row g-3 mt-2">
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Discount %">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Shipping Charges">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" placeholder="Stock Level">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <img src="https://via.placeholder.com/150" class="card-img-top mb-2">
+                    <h6>Product Title</h6>
+                    <p>Sample product description with key details about the product.</p>
+                    <p><del>₹100</del> ₹90</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 text-end">
+            <button class="btn btn-secondary prev-step">Back</button>
+            <button class="btn btn-success">Finish</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+let currentStep = 1;
+
+$(".next-step").click(function(){
+    $("#step" + currentStep).removeClass("active");
+    currentStep++;
+    $("#step" + currentStep).addClass("active");
+});
+
+$(".prev-step").click(function(){
+    $("#step" + currentStep).removeClass("active");
+    currentStep--;
+    $("#step" + currentStep).addClass("active");
+});
+
+$(".theme-card").click(function(){
+    $(".theme-card").removeClass("selected");
+    $(this).addClass("selected");
+});
+</script>
+</body>
+</html>
